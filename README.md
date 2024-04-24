@@ -10,15 +10,30 @@ npm install sanity-plugin-user-guide
 
 ## Usage
 
+Define your page structure for the user guide:
+
+```ts
+const userGuideStructure = defineUserGuide([
+  page('Home', home).icon(HomeIcon),
+  divider(),
+  page('ContactPage', contactPage).icon(CommentIcon).documentType('contactPage'),
+  multiPage('ContentPage', [
+    page('Creating a content page', creatingAContentPage).documentType(contentPage),
+    page('Content Blocks', contentBlocks),
+    page('Uploading media', uploadingMedia),
+  ]).icon(DocumentIcon),
+]);
+```
+
 Add it as a plugin in `sanity.config.ts` (or .js):
 
 ```ts
 import {defineConfig} from 'sanity'
-import {myPlugin} from 'sanity-plugin-user-guide'
+import {userGuidePlugin} from 'sanity-plugin-user-guide'
 
 export default defineConfig({
   //...
-  plugins: [myPlugin({})],
+  plugins: [userGuidePlugin({userGuideStructure})],
 })
 ```
 
