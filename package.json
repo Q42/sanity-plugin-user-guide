@@ -9,7 +9,7 @@
   "homepage": "https://github.com/Q42/sanity-plugin-user-guide",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Q42/sanity-plugin-user-guide.git"
+    "url": "git+ssh://git@github.com/Q42/sanity-plugin-user-guide.git"
   },
   "license": "MIT",
   "author": "Q42 <ruben@q42.nl>",
@@ -71,5 +71,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "browserslist": ["extends @sanity/browserslist-config"]
 }
