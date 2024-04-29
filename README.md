@@ -1,3 +1,5 @@
+[![https://nodei.co/npm/@q42/sanity-plugin-user-guide.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/@q42/sanity-plugin-user-guide.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/@q42/sanity-plugin-user-guide)
+
 # sanity-plugin-user-guide
 
 > This is a **Sanity Studio v3** plugin.
