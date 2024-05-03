@@ -30,7 +30,7 @@ export const MultiPage: FunctionComponent<MultiPageProps> = ({
             }}
           >
             <Button
-              text={previousPage.name}
+              text={previousPage.title}
               fontSize={2}
               paddingY={3}
               paddingX={5}
@@ -50,7 +50,7 @@ export const MultiPage: FunctionComponent<MultiPageProps> = ({
             }}
           >
             <Button
-              text={nextPage.name}
+              text={nextPage.title}
               fontSize={2}
               paddingY={3}
               paddingX={5}

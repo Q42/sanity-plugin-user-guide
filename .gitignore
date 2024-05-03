@@ -58,3 +58,6 @@ yalc.lock
 
 # Compiled plugin
 dist
+
+# Build cache??
+dev/null

@@ -2,10 +2,11 @@
 
 import {slugify} from '../../utils/slugify'
 import {UserGuideNodeBuilder} from '../nodeBuilder'
+import {UserGuideBaseNode, UserGuideError} from '../structure'
 
-export type BasePage = {
+export type BasePage = UserGuideBaseNode & {
   slug: string
-  name: string
+  title: string
   documentType?: string | string[]
   documentId?: string | string[]
   parentSlug?: string
@@ -25,17 +26,27 @@ export type MarkdownPage = BasePage & {
 export type UserGuidePage = JsxPage | MarkdownPage
 
 export class PageBuilder extends UserGuideNodeBuilder<JsxPage | MarkdownPage> {
-  constructor(name: string, page: string | FunctionComponent) {
-    const slug = slugify(name)
-    if (typeof page === 'string') {
-      super({_type: 'markdownPage', name, slug, markdown: page})
-    } else {
-      super({_type: 'jsxPage', name, slug, component: page})
-    }
+  constructor() {
+    super({_type: 'jsxPage'})
   }
 
   slug(slug: string): PageBuilder {
     this.node.slug = slug
+    return this
+  }
+
+  title(title: string): PageBuilder {
+    this.node.title = title
+    return this.node.slug ? this : this.slug(slugify(title))
+  }
+
+  markdown(markdown: string): PageBuilder {
+    this.node = {...this.node, _type: 'markdownPage', markdown}
+    return this
+  }
+
+  component(component: FunctionComponent): PageBuilder {
+    this.node = {...this.node, _type: 'jsxPage', component}
     return this
   }
 
@@ -51,5 +62,35 @@ export class PageBuilder extends UserGuideNodeBuilder<JsxPage | MarkdownPage> {
   documentId(documentId: string | string[]): PageBuilder {
     this.node.documentId = documentId
     return this
+  }
+
+  build(parentSlug?: string): UserGuidePage {
+    const {_type, slug, title} = this.node
+    const helpUrl =
+      'https://github.com/Q42/sanity-plugin-user-guide/tree/main?tab=readme-ov-file#page'
+
+    if (!title || !title.trim()) {
+      throw new UserGuideError(`'Page' must have a valid title`, helpUrl)
+    }
+
+    if (!slug) {
+      throw new UserGuideError(`'Page' must have a slug`, helpUrl)
+    }
+
+    if (_type === 'jsxPage') {
+      const component = this.node.component
+      if (component) {
+        return {...this.node, slug, title, component, parentSlug}
+      }
+    }
+
+    if (_type === 'markdownPage') {
+      const markdown = this.node.markdown
+      if (markdown) {
+        return {...this.node, slug, title, markdown, parentSlug}
+      }
+    }
+
+    throw new UserGuideError(`'Page' must have a markdown or page component`, helpUrl)
   }
 }

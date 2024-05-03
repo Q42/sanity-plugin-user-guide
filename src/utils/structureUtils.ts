@@ -1,9 +1,13 @@
 ﻿import {UserGuideStructure} from '../builder'
 import {MultiPage} from '../builder/nodes/multiPage'
-import {JsxPage, MarkdownPage, UserGuidePage} from '../builder/nodes/page'
+import {UserGuidePage} from '../builder/nodes/page'
 
 export function getRootPages(structure: UserGuideStructure): (UserGuidePage | MultiPage)[] {
-  return structure.reduce<(UserGuidePage | MultiPage)[]>((acc, {node}) => {
+  if (!Array.isArray(structure)) {
+    return []
+  }
+
+  return structure.reduce<(UserGuidePage | MultiPage)[]>((acc, node) => {
     if (node._type === 'jsxPage' || node._type === 'markdownPage' || node._type === 'multiPage') {
       return [...acc, node]
     }
@@ -13,13 +17,17 @@ export function getRootPages(structure: UserGuideStructure): (UserGuidePage | Mu
 }
 
 export function getContentPages(structure: UserGuideStructure): UserGuidePage[] {
-  return structure.reduce<UserGuidePage[]>((acc, {node}) => {
+  if (!Array.isArray(structure)) {
+    return []
+  }
+
+  return structure.reduce<UserGuidePage[]>((acc, node) => {
     if (node._type === 'jsxPage' || node._type === 'markdownPage') {
       return [...acc, node]
     }
 
     if (node._type === 'multiPage') {
-      return [...acc, ...node.pages.map((p) => p.node)]
+      return [...acc, ...node.pages]
     }
 
     return acc

@@ -5,6 +5,7 @@ import {useRouterState} from 'sanity/router'
 import {UserGuideStructure} from '../builder'
 import type {UserGuideState} from '../router'
 import {getRootPages} from '../utils/structureUtils'
+import {Error} from './Error'
 import {MultiPage} from './MultiPage'
 import {Page} from './Page'
 import {PageTree} from './PageTree'
@@ -20,10 +21,14 @@ export const Tool: FunctionComponent<ToolRootProps> = ({userGuideStructure}) => 
   const currentSubPageIndex = useMemo(
     () =>
       currentPage && 'pages' in currentPage
-        ? currentPage.pages.findIndex((p) => p.node.slug === subPage)
+        ? currentPage.pages.findIndex((p) => p.slug === subPage)
         : -1,
     [currentPage, subPage],
   )
+
+  if (!Array.isArray(userGuideStructure)) {
+    return <Error error={userGuideStructure} />
+  }
 
   return (
     <Flex height="fill" align="flex-start">
@@ -45,7 +50,7 @@ export const Tool: FunctionComponent<ToolRootProps> = ({userGuideStructure}) => 
           <Card height="fill" paddingX={3} borderRight>
             <Box padding={2} paddingTop={5} marginBottom={2}>
               <Text size={1} weight="bold" muted>
-                {currentPage.name}
+                {currentPage.title}
               </Text>
             </Box>
             <PageTree structure={currentPage.pages} basePage={page} activeSlug={subPage} />
@@ -61,9 +66,9 @@ export const Tool: FunctionComponent<ToolRootProps> = ({userGuideStructure}) => 
             {currentPage && currentPage._type === 'multiPage' && currentSubPageIndex >= 0 && (
               <MultiPage
                 slug={currentPage.slug}
-                currentPage={currentPage.pages[currentSubPageIndex].node}
-                previousPage={currentPage.pages[currentSubPageIndex - 1]?.node}
-                nextPage={currentPage.pages[currentSubPageIndex + 1]?.node}
+                currentPage={currentPage.pages[currentSubPageIndex]}
+                previousPage={currentPage.pages[currentSubPageIndex - 1]}
+                nextPage={currentPage.pages[currentSubPageIndex + 1]}
               />
             )}
           </Container>

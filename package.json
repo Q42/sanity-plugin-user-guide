@@ -1,6 +1,6 @@
 {
   "name": "@q42/sanity-plugin-user-guide",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Sanity plugin to add a simple user guide to the CMS",
   "keywords": [
     "sanity",
@@ -42,6 +42,7 @@
   "dependencies": {
     "@sanity/icons": "^2.11.8",
     "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/uuid": "^3.0.2",
     "react-markdown": "^9.0.1",
     "remark-gfm": "^4.0.0"
   },
@@ -72,5 +73,7 @@
   "engines": {
     "node": ">=18"
   },
-  "browserslist": ["extends @sanity/browserslist-config"]
+  "browserslist": [
+    "extends @sanity/browserslist-config"
+  ]
 }
