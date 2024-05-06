@@ -47,7 +47,7 @@ The plugin uses a StructureBuilder-like API to define the user guide structure i
 
 A single page in the user guide. To describe the content of the page, you can use either markdown or a react component.
 
-example:
+Example:
 
 ```ts
 page().title('Home').markdown(home).icon(HomeIcon).documentType('home')
@@ -58,8 +58,8 @@ page().title('Home').markdown(home).icon(HomeIcon).documentType('home')
 | **title(title)**<br/><br/>Sets the title of the page.<br/><br/>Parameters:<br/>**title**: string                                                                     |
 | **slug(slug)**<br/><br/>Sets the slug of the page. Uses the title by default.<br/><br/>Parameters:<br/>**slug**: string                                              |
 | **markdown(markdown)**<br/><br/>Sets the content of the page using markdown.<br/><br/>Parameters:<br/>**markdown**: string                                           |
-| **component(component)**<br/><br/>Sets the content of the page using a React component.<br/><br/>Parameters:<br/>**component**: FunctionComponent                    |
-| **icon(icon)**<br/><br/>Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: FunctionComponent                                            |
+| **component(component)**<br/><br/>Sets the content of the page using a React component.<br/><br/>Parameters:<br/>**component**: React.ElementType                    |
+| **icon(icon)**<br/><br/>Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: React.ElementType                                            |
 | **documentType(documentType)**<br/><br/>Selects one or multiple document types that link to this page.<br/><br/>Parameters:<br/>**documentType**: string \| string[] |
 | **documentId(documentId)**<br/><br/>Selects one or multiple document IDs that link to this page.<br/><br/>Parameters:<br/>**documentId**: string \| string[]         |
 
@@ -67,7 +67,7 @@ page().title('Home').markdown(home).icon(HomeIcon).documentType('home')
 
 A page that contains multiple subpages. This is useful for splitting up a large topic into multiple steps.
 
-example:
+Example:
 
 ```ts
 multiPage().title('ContentPage').icon(DocumentIcon).pages([
@@ -82,13 +82,13 @@ multiPage().title('ContentPage').icon(DocumentIcon).pages([
 | **title(title)**<br/><br/>Sets the title of the page.<br/><br/>Parameters:<br/>**title**: string                                                                                             |
 | **slug(slug)**<br/><br/>Sets the slug of the page. Uses the title by default.<br/><br/>Parameters:<br/>**slug**: string                                                                      |
 | **pages(pages)**<br/><br/>Set the pages to be displayed within this multi page. You can use the page method above to generate these pages.<br/><br/>Parameters:<br/>**pages**: PageBuilder[] |
-| **icon(icon)**<br/><br/>Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: FunctionComponent                                                                    |
+| **icon(icon)**<br/><br/>Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: React.ElementType                                                                    |
 
 ### Divider
 
 A simple divider in the user guide tree to separate groups of pages. This has no additional methods.
 
-example:
+Example:
 
 ```ts
 divider()

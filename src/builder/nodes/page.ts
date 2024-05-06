@@ -1,4 +1,4 @@
-﻿import {FunctionComponent} from 'react'
+﻿import {ElementType} from 'react'
 
 import {slugify} from '../../utils/slugify'
 import {UserGuideNodeBuilder} from '../nodeBuilder'
@@ -10,12 +10,12 @@ export type BasePage = UserGuideBaseNode & {
   documentType?: string | string[]
   documentId?: string | string[]
   parentSlug?: string
-  icon?: FunctionComponent
+  icon?: ElementType
 }
 
 export type JsxPage = BasePage & {
   _type: 'jsxPage'
-  component: FunctionComponent
+  component: ElementType
 }
 
 export type MarkdownPage = BasePage & {
@@ -45,12 +45,12 @@ export class PageBuilder extends UserGuideNodeBuilder<JsxPage | MarkdownPage> {
     return this
   }
 
-  component(component: FunctionComponent): PageBuilder {
+  component(component: ElementType): PageBuilder {
     this.node = {...this.node, _type: 'jsxPage', component}
     return this
   }
 
-  icon(icon: FunctionComponent): PageBuilder {
+  icon(icon: ElementType): PageBuilder {
     this.node.icon = icon
     return this
   }

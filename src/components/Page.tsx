@@ -6,18 +6,16 @@ import {UserGuidePage} from '../builder/nodes/page'
 import {MarkdownStyle} from '../styled/markdown'
 
 export const Page: FunctionComponent<{page: UserGuidePage}> = ({page}) => {
+  if ('component' in page) {
+    return <>{page.component}</>
+  }
+
   return (
     <>
-      {'component' in page ? (
-        page.component({})
-      ) : (
-        <>
-          <MarkdownStyle />
-          <Markdown className="markdown" remarkPlugins={[remarkGfm]}>
-            {page.markdown}
-          </Markdown>
-        </>
-      )}
+      <MarkdownStyle />
+      <Markdown className="markdown" remarkPlugins={[remarkGfm]}>
+        {page.markdown}
+      </Markdown>
     </>
   )
 }

@@ -1,4 +1,4 @@
-﻿import {FunctionComponent} from 'react'
+﻿import {ElementType} from 'react'
 
 import {slugify} from '../../utils/slugify'
 import {UserGuideNodeBuilder} from '../nodeBuilder'
@@ -10,7 +10,7 @@ export type MultiPage = UserGuideBaseNode & {
   pages: UserGuidePage[]
   slug: string
   title: string
-  icon?: FunctionComponent
+  icon?: ElementType
 }
 
 export class MultiPageBuilder extends UserGuideNodeBuilder<MultiPage> {
@@ -35,7 +35,7 @@ export class MultiPageBuilder extends UserGuideNodeBuilder<MultiPage> {
     return this
   }
 
-  icon(icon: FunctionComponent): MultiPageBuilder {
+  icon(icon: ElementType): MultiPageBuilder {
     this.node.icon = icon
     return this
   }
