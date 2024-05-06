@@ -39,6 +39,24 @@ export default defineConfig({
 })
 ```
 
+
+### Using Markdown files
+
+If you want to use markdown from a typescript file, you can add the following snippet to your `global.d.ts` to load the markdown file as a string.
+
+```ts
+declare module '*.md' {
+  const content: string;
+  export default content;
+}
+```
+
+Then you can import the markdown file as a string:
+
+```ts
+import home from './home.md';
+```
+
 ## API Reference
 
 The plugin uses a StructureBuilder-like API to define the user guide structure in a similar way to how you would define the CMS structure. Currently, the following methods are available:
