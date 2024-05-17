@@ -2,6 +2,8 @@
 
 > This is a **Sanity Studio v3** plugin.
 
+![image](https://github.com/Q42/sanity-plugin-user-guide/assets/24476678/ee440336-8a85-45ea-b8d9-4304e09e5648)
+
 ## Installation
 
 ```sh
@@ -63,7 +65,9 @@ The plugin uses an API similar to Sanity's structure builder to define the user 
 
 A single page in the user guide. To describe the content of the page, you can use either markdown or a react component.
 
-Example:
+It is possible to link a page to a documentType or documentId. This will add it to the user menu for those documents. Clicking the link will open the user guide in a side panel of the structure tool.
+
+#### Example:
 
 ```ts
 page().title('Home').markdown(home).icon(HomeIcon).documentType('home')
@@ -83,7 +87,7 @@ page().title('Home').markdown(home).icon(HomeIcon).documentType('home')
 
 A page that contains multiple subpages. This is useful for splitting up a large topic into multiple steps.
 
-Example:
+#### Example:
 
 ```ts
 multiPage().title('ContentPage').icon(DocumentIcon).pages([
@@ -104,7 +108,7 @@ multiPage().title('ContentPage').icon(DocumentIcon).pages([
 
 A simple divider in the user guide tree to separate groups of pages. This has no additional methods.
 
-Example:
+#### Example:
 
 ```ts
 divider()
