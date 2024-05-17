@@ -7,7 +7,7 @@ import {MarkdownStyle} from '../styled/markdown'
 
 export const Page: FunctionComponent<{page: UserGuidePage}> = ({page}) => {
   if ('component' in page) {
-    return <>{page.component}</>
+    return <page.component />
   }
 
   return (
