@@ -40,7 +40,7 @@ export default defineConfig({
 
 ### Using Markdown files
 
-If you want to use markdown from a typescript file, you can add the following snippet to your `global.d.ts` to load the markdown file as a string.
+If you want to import markdown files from a typescript file, you can add the following snippet to your `global.d.ts`.
 
 ```ts
 declare module '*.md' {
@@ -57,7 +57,7 @@ import home from './home.md';
 
 ## API Reference
 
-The plugin uses a StructureBuilder-like API to define the user guide structure in a similar way to how you would define the CMS structure. Currently, the following methods are available:
+The plugin uses an API similar to Sanity's structure builder to define the user guide structure. Currently, the following methods are available:
 
 ### Page
 
@@ -69,15 +69,15 @@ Example:
 page().title('Home').markdown(home).icon(HomeIcon).documentType('home')
 ```
 
-| Methods                                                                                                                                                              |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **title(title)**<br/><br/>Sets the title of the page.<br/><br/>Parameters:<br/>**title**: string                                                                     |
-| **slug(slug)**<br/><br/>Sets the slug of the page. Uses the title by default.<br/><br/>Parameters:<br/>**slug**: string                                              |
-| **markdown(markdown)**<br/><br/>Sets the content of the page using markdown.<br/><br/>Parameters:<br/>**markdown**: string                                           |
-| **component(component)**<br/><br/>Sets the content of the page using a React component.<br/><br/>Parameters:<br/>**component**: React.ElementType                    |
-| **icon(icon)**<br/><br/>Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: React.ElementType                                            |
-| **documentType(documentType)**<br/><br/>Selects one or multiple document types that link to this page.<br/><br/>Parameters:<br/>**documentType**: string \| string[] |
-| **documentId(documentId)**<br/><br/>Selects one or multiple document IDs that link to this page.<br/><br/>Parameters:<br/>**documentId**: string \| string[]         |
+| Methods                       | Description                                                                                                                                                 |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **title(title)**              | Sets the title of the page.<br/><br/>Parameters:<br/>**title**: string                                                                                      |
+| **slug(slug)**                | Sets the slug of the page. Uses the title by default.<br/><br/>Parameters:<br/>**slug**: string                                                             |
+| **markdown(markdown)**        | Sets the content of the page using markdown.<br/><br/>Parameters:<br/>**markdown**: string                                                                  |
+| **component(component)**      | Sets the content of the page using a React component.<br/><br/>Parameters:<br/>**component**: React.ElementType                                             |
+| **icon(icon)**                | Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: React.ElementType                                                           |
+| **documentType(documentType)**| Selects one or multiple document types that link to this page.<br/><br/>Parameters:<br/>**documentType**: string \| string[]                                |
+| **documentId(documentId)**    | Selects one or multiple document IDs that link to this page.<br/><br/>Parameters:<br/>**documentId**: string \| string[]                                    |
 
 ### Multi Page
 
@@ -93,12 +93,12 @@ multiPage().title('ContentPage').icon(DocumentIcon).pages([
 ])
 ```
 
-| Methods                                                                                                                                                                                      |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **title(title)**<br/><br/>Sets the title of the page.<br/><br/>Parameters:<br/>**title**: string                                                                                             |
-| **slug(slug)**<br/><br/>Sets the slug of the page. Uses the title by default.<br/><br/>Parameters:<br/>**slug**: string                                                                      |
-| **pages(pages)**<br/><br/>Set the pages to be displayed within this multi page. You can use the page method above to generate these pages.<br/><br/>Parameters:<br/>**pages**: PageBuilder[] |
-| **icon(icon)**<br/><br/>Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: React.ElementType                                                                    |
+| Methods         | Description                                                                                                                                                          |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **title(title)**| Sets the title of the page.<br/><br/>Parameters:<br/>**title**: string                                                                                               |
+| **slug(slug)**  | Sets the slug of the page. Uses the title by default.<br/><br/>Parameters:<br/>**slug**: string                                                                      |
+| **pages(pages)**| Set the pages to be displayed within this multi page. You can use the page method above to generate these pages.<br/><br/>Parameters:<br/>**pages**: PageBuilder[]   |
+| **icon(icon)**  | Sets an Icon for this page in the page tree.<br/><br/>Parameters:<br/>**icon**: React.ElementType                                                                    |
 
 ### Divider
 
