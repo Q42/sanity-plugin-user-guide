@@ -20,7 +20,7 @@ const userGuideStructure = defineUserGuide([
   divider(),
   page().title('ContactPage').markdown(contactPage).icon(CommentIcon).documentType('contactPage'),
   multiPage().title('ContentPage').icon(DocumentIcon).pages([
-    page().title('Creating a content page').markdown(creatingAContentPage).documentType(contentPage),
+    page().title('Creating a content page').markdown(creatingAContentPage).documentType('contentPage'),
     page().title('Content Blocks').markdown(contentBlocks),
     page().title('Uploading media').markdown(uploadingMedia),
   ]),
