@@ -65,7 +65,7 @@ The plugin uses an API similar to Sanity's structure builder to define the user 
 
 A single page in the user guide. To describe the content of the page, you can use either markdown or a react component.
 
-It is possible to link a page to a documentType or documentId. This will add it to the user menu for those documents. Clicking the link will open the user guide in a side panel of the structure tool.
+It is possible to link a page to document type(s) or id(s). This will add it to the user menu for those documents. Clicking the link will open the user guide in a side panel of the structure tool.
 
 #### Example:
 
