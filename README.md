@@ -7,7 +7,7 @@
 ## Installation
 
 ```sh
-npm install sanity-plugin-user-guide
+npm install @q42/sanity-plugin-user-guide
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ Add it as a plugin in `sanity.config.ts` (or .js):
 
 ```ts
 import {defineConfig} from 'sanity'
-import {userGuidePlugin} from 'sanity-plugin-user-guide'
+import {userGuidePlugin} from '@q42/sanity-plugin-user-guide'
 
 export default defineConfig({
   //...
